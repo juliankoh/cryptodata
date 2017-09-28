@@ -5,3 +5,4 @@ def price(symbol):
 	print (coinmarketcap.ticker(symbol))
 
 price(input())
+
