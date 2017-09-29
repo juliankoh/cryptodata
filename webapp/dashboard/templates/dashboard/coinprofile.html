@@ -1,5 +1,5 @@
 
-Name: {{ coininfo.name }}
+<h1>{{ coininfo.name }}</h1>
 <br>
 Price: {{ coininfo.price_usd }}
 <br>
@@ -14,3 +14,11 @@ Price: {{ coininfo.price_usd }}
 Market Cap: {{ coininfo.market_cap_usd }}
 <br>
 Rank: {{ coininfo.rank }}
+
+<h1>Exchanges:</h1>
+
+{% for item in exchangeinfo %}
+	{{ item.exchange }} : {{ item.price_usd }}<br>
+{% endfor %}
+
+

@@ -13,15 +13,19 @@ import simplejson as json
 def index(request):
     if request.method == 'POST':
         form = Currency1(request.POST)
-
         if form.is_valid():
         	name = form.cleaned_data['name']
         	coinmarketcap = Pymarketcap()
         	coininfo_unicode = coinmarketcap.ticker(name)
-        	coininfo = json.dumps(coininfo_unicode)
-        	context = {'coininfo': coininfo_unicode}
+        	exchangeinfo_unicode = coinmarketcap.markets(name)
+        	context = {
+        	'coininfo': coininfo_unicode,
+        	'exchangeinfo' : exchangeinfo_unicode,
+        	}
+
         	return render(request, 'dashboard/coinprofile.html', context)
 
     else:
         form = Currency1()
     return render(request, 'dashboard/index.html', {'form': form})
+
